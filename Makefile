@@ -1,3 +1,5 @@
+
+
 default: build start
 
 build:
@@ -17,3 +19,5 @@ test: build
 
 clean:
 	rm -rf lib pub node_modules
+
+.PHONY: build
