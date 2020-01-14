@@ -10,7 +10,7 @@ describe('routes', () => {
     let called;
     let app;
     let auth;
-    beforeEach('Setup app', () => {
+    beforeEach(() => {
       called = 0;
       auth = null;
 

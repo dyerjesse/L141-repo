@@ -45,6 +45,7 @@ function compile() {
 function bundle(debug: boolean) {
   console.log("Bundling...");
   exec("cp ./build/src/lib/* ./lib");
+  exec("mv ./build/src/lib ./build/lib");
   exec("cp ./src/pub/lexicon.js ./pub");
   exec("cp ./src/pub/style.css ./pub");
   if (debug) {

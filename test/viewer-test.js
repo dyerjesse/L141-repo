@@ -3,7 +3,7 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
-import '../src/viewer';
+import '../src/pub/viewer';
 
 let Viewer = window.gcexports.viewer.Viewer;
 let data = 123;

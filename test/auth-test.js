@@ -2,19 +2,21 @@ const { expect } = require('chai');
 const NodeHttpAdapter = require('@pollyjs/adapter-node-http');
 const { Polly, setupMocha } = require('@pollyjs/core');
 const FSPersister = require('@pollyjs/persister-fs');
-
-const { createAuth } = require('./../src/auth.js');
+const { createAuth } = require('./../lib/auth.js');
 
 Polly.register(FSPersister);
 Polly.register(NodeHttpAdapter);
 
 describe('auth', () => {
   const compiler = { langID: '0' };
-
-  setupMocha({
+  const { server } = new Polly("1", {
     adapters: ['node-http'],
     persister: 'fs',
   });
+  // setupMocha({
+  //   adapters: ['node-http'],
+  //   persister: 'fs',
+  // });
 
   it('should validate with no token', function(done) {
     // Arrange
@@ -36,7 +38,6 @@ describe('auth', () => {
   it('should return err for invalid token', function(done) {
     // Arrange
     const auth = createAuth(compiler);
-    const { server } = this.polly;
     server
       .post('https://auth.artcompiler.com/validate')
       .intercept((_, res) => res.sendStatus(401));
@@ -56,7 +57,6 @@ describe('auth', () => {
   it('should data for valid token', function(done) {
     // Arrange
     const auth = createAuth(compiler);
-    const { server } = this.polly;
     server
       .post('https://auth.artcompiler.com/validate')
       .intercept((_, res) => res.status(200).json({ address: '1.2.3.4', access: 'foo' }));
@@ -80,7 +80,6 @@ describe('auth', () => {
   it('should cache data', function(done) {
     // Arrange
     const auth = createAuth(compiler);
-    const { server } = this.polly;
     server
       .post('https://auth.artcompiler.com/validate')
       .intercept((_, res) => res.status(200).json({ address: '1.2.3.4', access: 'foo' }), {times: 1});

@@ -14,10 +14,10 @@ watch: build
 smoke: build
 	npm run smoke
 
-test: build
+test:
 	npm run test
 
 clean:
 	rm -rf lib pub node_modules
 
-.PHONY: build
+.PHONY: build test

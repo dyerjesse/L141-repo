@@ -9,7 +9,7 @@ describe('routes', () => {
   describe('compile', () => {
     let called;
     let app;
-    beforeEach('Setup app', () => {
+    beforeEach(() => {
       called = 0;
       const compiler = {
         compile: function(code, data, config, resume) {

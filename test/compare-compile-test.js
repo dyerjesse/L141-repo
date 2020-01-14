@@ -1,8 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import './viewer-setup';
-import '../src/viewer';
-import snapshotDiff from 'snapshot-diff';
+import '../src/pub/viewer';
+//import snapshotDiff from 'snapshot-diff';
 import vm from 'vm';
 
 const {expect} = require('chai');
@@ -35,13 +35,13 @@ getTests(function (err, testData) {
         resume();
       });
     }
-    before('Check local', function(done) {
+    beforeAll(function(done) {
       checkGateway(LOCAL_GATEWAY, done);
     });
-    before('Check remote gateway', function (done) {
+    beforeAll(function (done) {
       checkGateway(REMOTE_GATEWAY, done);
     });
-    before('Get remote viewer', function(done) {
+    beforeAll(function(done) {
       const hostUrl = new url.URL(REMOTE_GATEWAY);
       hostUrl.pathname = '/L0/viewer.js';
 
@@ -168,6 +168,7 @@ function getTests(resume) {
     tests.forEach(d => {
       data.push(d.itemid);
     });
+    console.log("getTests() data=" + data);
     resume(null, data);
   });
 }
