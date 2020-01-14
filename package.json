@@ -9,17 +9,6 @@
     "type": "git",
     "url": "https://github.com/graffiticode/L0"
   },
-  "scripts": {
-    "start": "node app.js",
-    "build": "tsc tools/build.ts --outDir build/tools; node build/tools/build.js",
-    "pretest": "npm run build",
-    "test": "jest build/",
-    "watch": "npx nodemon -w src -w index.js -w package.json --exec make",
-    "lambda:zip": "zip -r function.zip . -x=.git/*",
-    "lambda:update": "aws lambda update-function-code --function-name L0 --zip-file fileb://function.zip",
-    "deploy:lambda": "npm run build && npm run lambda:zip && npm run lambda:update",
-    "deploy:gcloud": "gcloud functions deploy L0 --trigger-http --runtime=nodejs10 --entry-point=compiler"
-  },
   "dependencies": {
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
@@ -29,7 +18,8 @@
     "express": "^4.17.1",
     "hashids": "1.1.1",
     "morgan": "^1.9.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "typescript": "^3.7.4"
   },
   "engines": {
     "node": "latest"
@@ -53,5 +43,16 @@
     "sinon": "^7.5.0",
     "supertest": "^4.0.2",
     "uglify-js": "^2.7.3"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "build": "tsc tools/build.ts --outDir build/tools; node build/tools/build.js",
+    "pretest": "npm run build",
+    "test": "jest build/",
+    "watch": "npx nodemon -w src -w index.js -w package.json --exec make",
+    "lambda:zip": "zip -r function.zip . -x=.git/*",
+    "lambda:update": "aws lambda update-function-code --function-name L0 --zip-file fileb://function.zip",
+    "deploy:lambda": "npm run build && npm run lambda:zip && npm run lambda:update",
+    "deploy:gcloud": "gcloud functions deploy L0 --trigger-http --runtime=nodejs10 --entry-point=compiler"
   }
 }

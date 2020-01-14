@@ -39,7 +39,7 @@ function clean() {
 
 function compile() {
   console.log("Compiling...");
-  exec("tsc");
+  exec("node_modules/typescript/bin/tsc");
 }
 
 function bundle(debug: boolean) {
