@@ -3,7 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 
-const routes = require('./routes');
+const routes = require('./src/routes');
 const compiler = require("./lib/compile.js");
 const {createAuth} = require('./lib/auth.js');
 
@@ -35,7 +35,7 @@ app.post('/compile', routes.auth(auth, 'compile'), routes.compile(compiler));
 
 // start the dance...
 if (!module.parent) {
-  app.listen(PORT, () => {
+  app.listen(parseInt(PORT, 10), () => {
     console.log(`Node app is running at :${PORT}`);
   });
 }

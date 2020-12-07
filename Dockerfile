@@ -1,17 +1,16 @@
-FROM node:10
+FROM node:14-alpine
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Install app dependencies
 COPY package*.json ./
-RUN npm install \
-    && npm install -g browserify \
-    && npm install -g babel-cli
 
-# Bundle app source
+RUN npm install
+
 COPY . .
 
-RUN make build
+RUN npm run build
 
-CMD [ "node", "app.js" ]
+RUN npm ci --production
+
+CMD [ "node", "-r", "./tracing.js", "app.js" ]
+USER node

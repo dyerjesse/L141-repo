@@ -10,6 +10,19 @@
     "url": "https://github.com/graffiticode/L0"
   },
   "dependencies": {
+    "@google-cloud/opentelemetry-cloud-trace-exporter": "^0.7.0",
+    "@opentelemetry/api": "^0.13.0",
+    "@opentelemetry/core": "^0.13.0",
+    "@opentelemetry/metrics": "^0.13.0",
+    "@opentelemetry/node": "^0.13.0",
+    "@opentelemetry/plugin-dns": "^0.11.0",
+    "@opentelemetry/plugin-express": "^0.11.0",
+    "@opentelemetry/plugin-http": "^0.13.0",
+    "@opentelemetry/plugin-https": "^0.13.0",
+    "@opentelemetry/plugin-pg": "^0.11.0",
+    "@opentelemetry/plugin-pg-pool": "^0.11.0",
+    "@opentelemetry/plugin-redis": "^0.11.0",
+    "@opentelemetry/tracing": "^0.13.0",
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "aws-serverless-express": "^3.3.6",
@@ -20,9 +33,6 @@
     "morgan": "^1.9.1",
     "request": "^2.88.0",
     "typescript": "^3.7.4"
-  },
-  "engines": {
-    "node": "latest"
   },
   "devDependencies": {
     "@pollyjs/adapter-node-http": "^2.7.0",
@@ -45,11 +55,11 @@
     "uglify-js": "^2.7.3"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node -r ./tracing.js app.js",
     "build": "tsc tools/build.ts --outDir build/tools; node build/tools/build.js",
     "pretest": "npm run build",
     "test": "jest build/",
-    "watch": "npx nodemon -w src -w index.js -w package.json --exec make",
+    "watch": "npx nodemon -w src -w app.js -w package.json --exec make",
     "lambda:zip": "zip -r function.zip . -x=.git/*",
     "lambda:update": "aws lambda update-function-code --function-name L0 --zip-file fileb://function.zip",
     "deploy:lambda": "npm run build && npm run lambda:zip && npm run lambda:update",
