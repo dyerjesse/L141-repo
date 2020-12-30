@@ -5,9 +5,8 @@ node_modules/
 function.zip
 
 # Build
-lib/
-pub/
-build/
+dist/
 
+# Misc
 *~
 .DS_Store

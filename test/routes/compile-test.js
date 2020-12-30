@@ -3,7 +3,7 @@ const {expect} = require('chai');
 const express = require('express');
 const request = require('supertest');
 
-const routes = require('../../src/routes');
+const routes = require('../../src/lib/routes');
 
 describe('routes', () => {
   describe('compile', () => {

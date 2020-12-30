@@ -1,13 +1,10 @@
 /* Copyright (c) 2016, Art Compiler LLC */
-import {
+const {
   assert,
   message,
   messages,
   reserveCodeRange,
-  decodeID,
-  encodeID,
-  validate,
-} from "./share.js"
+} = require('./share.js');
 reserveCodeRange(1000, 1999, "compile");
 messages[1001] = "Node ID %1 not found in pool.";
 messages[1002] = "Invalid tag in node with Node ID %1.";
@@ -416,7 +413,7 @@ let render = (function() {
   }
   return render;
 })();
-export let compiler = (function () {
+exports.compiler = (function () {
   exports.langID = '0';
   exports.version = "v1.0.0";
   exports.compile = function compile(code, data, config, resume) {
