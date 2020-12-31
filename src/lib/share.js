@@ -240,7 +240,7 @@ function validate(token, resume) {
   }
 }
 
-exports = {
+module.exports = {
   assert,
   message,
   messages,
