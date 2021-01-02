@@ -17,7 +17,6 @@ app.use(express.json({ type: 'application/json', limit: '50mb' }));
 // app routes
 app.get('/', routes.root(compiler));
 app.get('/version', routes.version(compiler));
-app.get('/:path', routes.lang(compiler));
 app.post('/compile', routes.auth(auth, 'compile'), routes.compile(compiler));
 
 // serve up static content from dist
