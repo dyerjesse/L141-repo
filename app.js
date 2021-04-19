@@ -1,16 +1,15 @@
-const express = require('express');
-const morgan = require('morgan');
+import express from 'express';
+import morgan from 'morgan';
+import {createAuth} from './src/auth.js';
+import {compiler} from './src/compile.js';
+import routes from './src/routes/index.js';
+import fs from 'fs';
 
-const {createAuth} = require('./src/lib/auth.js');
-const compiler = require('./src/lib/compile.js');
-const routes = require('./src/lib/routes');
-
-global.config = require('./config.json');
+global.config = fs.readFileSync('./config.json');
 const PORT = process.env.PORT || `5${compiler.langID}`;
-
 const auth = createAuth(compiler);
 
-const app = exports.app = express();
+const app = express();
 app.use(morgan('dev'));
 app.use(express.json({ type: 'application/json', limit: '50mb' }));
 
@@ -29,8 +28,6 @@ app.use(function (err, req, res, next) {
 });
 
 // start the dance...
-if (!module.parent) {
-  app.listen(parseInt(PORT, 10), () => {
-    console.log(`Node app is running at :${PORT}`);
-  });
-}
+app.listen(parseInt(PORT, 10), () => {
+  console.log(`Node app is running at :${PORT}`);
+});
