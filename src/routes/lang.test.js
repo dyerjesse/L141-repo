@@ -1,8 +1,6 @@
-const request = require('supertest');
-const express = require('express');
-
-const routes = require('.');
-
+import request from 'supertest';
+import express from 'express';
+import routes from './index.js';
 describe('routes', () => {
   describe('lang', () => {
     it('should return specified compiler langID', (done) => {
@@ -15,7 +13,6 @@ describe('routes', () => {
         .get('/lang')
         .expect(200, 'Hello, L42!', done);
     });
-
     it('should return v0.0.0 when no compiler langID', (done) => {
       const compiler = {};
       const app = express();

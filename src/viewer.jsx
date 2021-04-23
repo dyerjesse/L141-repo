@@ -1,11 +1,9 @@
-/* Copyright (c) 2017, Art Compiler LLC */
-/* @flow */
+/* Copyright (c) 2021, ARTCOMPILER INC */
 import * as React from 'react';
 import * as d3 from 'd3';
+//import './style.css';
 
-import './style.css';
-
-class Viewer extends React.Component {
+export class Viewer extends React.Component {
   componentDidMount() {
     d3.select('#graff-view').append('div').classed('done-rendering', true);
   }
@@ -45,8 +43,8 @@ class Viewer extends React.Component {
   }
 };
 
-window.gcexports.viewer = (function () {
-  return {
-    Viewer: Viewer,
-  };
-})();
+// window.gcexports.viewer = (function () {
+//   return {
+//     Viewer: Viewer,
+//   };
+// })();

@@ -1,8 +1,6 @@
-const request = require('supertest');
-const express = require('express');
-
-const routes = require('.');
-
+import request from 'supertest';
+import express from 'express';
+import routes from './index.js';
 describe('routes', () => {
   describe('version', () => {
     it('should return specified compiler version', (done) => {

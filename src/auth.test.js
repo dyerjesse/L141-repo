@@ -1,7 +1,7 @@
-const NodeHttpAdapter = require('@pollyjs/adapter-node-http');
-const { Polly } = require('@pollyjs/core');
-const FSPersister = require('@pollyjs/persister-fs');
-const { createAuth } = require('./auth');
+import NodeHttpAdapter from '@pollyjs/adapter-node-http';
+import { Polly } from '@pollyjs/core';
+import FSPersister from '@pollyjs/persister-fs';
+import { createAuth } from './auth';
 
 Polly.register(FSPersister);
 Polly.register(NodeHttpAdapter);

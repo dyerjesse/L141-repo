@@ -4,14 +4,14 @@ import {createAuth} from './src/auth.js';
 import {compiler} from './src/compile.js';
 import routes from './src/routes/index.js';
 import fs from 'fs';
-
 global.config = fs.readFileSync('./config.json');
 const PORT = process.env.PORT || `5${compiler.langID}`;
 const auth = createAuth(compiler);
 
-const app = express();
+export const app = express();
+
 app.use(morgan('dev'));
-app.use(express.json({ type: 'application/json', limit: '50mb' }));
+app.use(express.json({type: 'application/json', limit: '50mb'}));
 
 // app routes
 app.get('/', routes.root(compiler));

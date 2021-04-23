@@ -1,20 +1,19 @@
-import '../../test/viewer-setup';
+import '../test/viewer-setup';
 import * as React from 'react';
-import { mount } from 'enzyme';
-import { expect } from 'chai';
+import enzyme from 'enzyme';
 import sinon from 'sinon';
-import './viewer';
-
-let Viewer = window.gcexports.viewer.Viewer;
+import Viewer from './viewer.jsx';
+//let Viewer = window.gcexports.viewer.Viewer;
 let data = 123;
 
+let dispatcher;
 beforeEach(() => {
   window.gcexports.dispatcher = {register: sinon.spy(), dispatch: sinon.spy()};
 });
 
 describe('Viewer', () => {
   it('renders the data', () => {
-    const component = mount(<Viewer id="graff-view" className="viewer" obj={data} />);
+    const component = enzyme.mount(<Viewer id="graff-view" className="viewer" obj={data} />);
     expect(component.find('span').text()).to.equal("123");
   });
 });
