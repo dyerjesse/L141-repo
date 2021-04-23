@@ -2,7 +2,7 @@
   "name": "@graffiticode/graffiticode-L0",
   "version": "0.0.1",
   "description": "Compiler as a service.",
-  "author": "Artcompiler Inc",
+  "author": "ARTCOMPILER",
   "license": "MIT",
   "main": "app.js",
   "repository": {
