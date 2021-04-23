@@ -2,6 +2,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 module.exports = () => {
   return {
+    mode: 'development',
+    devtool: 'source-map',
     entry: {
       lexicon: './src/lexicon.js',
       viewer: './src/viewer.jsx',

@@ -1,7 +1,7 @@
 /* Copyright (c) 2021, ARTCOMPILER INC */
 import * as React from 'react';
 import * as d3 from 'd3';
-//import './style.css';
+import './style.css';
 
 export class Viewer extends React.Component {
   componentDidMount() {
@@ -43,8 +43,8 @@ export class Viewer extends React.Component {
   }
 };
 
-// window.gcexports.viewer = (function () {
-//   return {
-//     Viewer: Viewer,
-//   };
-// })();
+window.gcexports.viewer = (function () {
+  return {
+    Viewer: Viewer,
+  };
+})();
