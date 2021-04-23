@@ -1,7 +1,7 @@
 import NodeHttpAdapter from '@pollyjs/adapter-node-http';
 import { Polly } from '@pollyjs/core';
 import FSPersister from '@pollyjs/persister-fs';
-import { createAuth } from './auth';
+import { createAuth } from '../auth';
 
 Polly.register(FSPersister);
 Polly.register(NodeHttpAdapter);
