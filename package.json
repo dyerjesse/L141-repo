@@ -32,8 +32,8 @@
     "webpack-cli": "^4.5.0"
   },
   "scripts": {
-    "build": "npx webpack --config config/webpack.config.js --mode production",
-    "build:dev": "npx webpack --config config/webpack.config.js --mode development",
+    "build": "npx webpack --config config/webpack.config.js --mode production; cp src/style.css dist",
+    "build:dev": "npx webpack --config config/webpack.config.js --mode development; cp src/style.css dist",
     "start": "node app.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --config config/jest.config.js",
     "watch": "nodemon -w src -w app.js -w package.json --exec make"

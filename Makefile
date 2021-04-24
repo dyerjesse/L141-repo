@@ -1,9 +1,10 @@
-
-
-default: build start
+default: build-dev start
 
 build:
 	npm run build
+
+build-dev:
+	npm run build:dev
 
 start:
 	npm start
