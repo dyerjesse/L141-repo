@@ -1,6 +1,6 @@
 import request from 'supertest';
 import express from 'express';
-import routes from './index.js';
+import routes from '../index.js';
 describe('routes', () => {
   describe('auth', () => {
     let called;

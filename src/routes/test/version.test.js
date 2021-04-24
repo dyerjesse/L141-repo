@@ -1,6 +1,6 @@
 import request from 'supertest';
 import express from 'express';
-import routes from './index.js';
+import routes from '../index.js';
 describe('routes', () => {
   describe('version', () => {
     it('should return specified compiler version', (done) => {
