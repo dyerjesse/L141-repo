@@ -5,7 +5,6 @@ module.exports = () => {
     mode: 'development',
     devtool: 'source-map',
     entry: {
-      lexicon: './src/lexicon.js',
       viewer: './src/viewer.jsx',
     },
     output: {
