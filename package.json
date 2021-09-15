@@ -1,5 +1,5 @@
 {
-  "name": "@graffiticode/graffiticode-L0",
+  "name": "@graffiticode/graffiticode-L141",
   "version": "0.0.1",
   "description": "Compiler as a service.",
   "author": "ARTCOMPILER",
@@ -7,7 +7,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/graffiticode/graffiticode-L0"
+    "url": "https://github.com/graffiticode/graffiticode-L141"
   },
   "type": "module",
   "devDependencies": {
