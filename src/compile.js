@@ -4,8 +4,7 @@ import {
   Checker as BasisChecker,
   Transformer as BasisTransformer,
   Compiler as BasisCompiler
-//} from '@graffiticode/basis';
-} from '../../../../work/graffiticode/basis/index.js';
+} from '@graffiticode/basis';
 
 export class Checker extends BasisChecker {
   HELLO(node, options, resume) {
@@ -39,7 +38,7 @@ function attrFromVal(val) {
         const parts = key.split('-');
         let name = parts.shift();
         parts.forEach(part => {
-          name += part.charAt(0).toUpperCase() + part.slice(1)
+          name += part.charAt(0).toUpperCase() + part.slice(1);
         });
         attr[name] = val[key];
       }
@@ -256,6 +255,37 @@ export class Transformer extends BasisTransformer {
         };
         resume(err, val);
       });
+    });
+  }
+
+  // Debugging
+  LIST(node, options, resume) {
+    let err = [];
+    let val = [];
+    if (node.elts.length === 0) {
+      resume(err, val);
+    } else {
+      for (let i = 0; i < node.elts.length; i++) {
+        let elt = node.elts[i];
+        this.visit(elt, options, (e0, v0) => {
+          err = err.concat(e0);
+          val.push(v0);
+          if (val.length === node.elts.length) {
+            resume(err, val);
+          }
+        });
+      }
+    }
+  }
+
+  PROG(node, options, resume) {
+    if (!options) {
+      options = {};
+    }
+    this.visit(node.elts[0], options, (e0, v0) => {
+      const err = e0;
+      const val = v0.pop();  // Return the value of the last expression.
+      resume(err, val);
     });
   }
 }

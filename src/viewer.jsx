@@ -71,6 +71,17 @@ function renderElts(data) {
   return elts;
 }
 
+window.transition = (action) => {
+  alert(JSON.stringify(action));
+  window.gcexports.dispatcher.dispatch({[window.gcexports.id]: {
+    data: {
+      action,
+    },
+    recompileCode: true,
+    dontUpdateID: false
+  }});
+}
+
 export class Viewer extends React.Component {
   componentDidMount() {
     d3.select('#graff-view').append('div').classed('done-rendering', true);
