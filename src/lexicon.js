@@ -1,5 +1,6 @@
 window.gcexports.globalLexicon = {
   "hello" : { "tk": 1, "name": "HELLO", "cls": "function", "length": 1 , "arity": 1 },
+  "goodbye" : { "tk": 1, "name": "GOODBYE", "cls": "function", "length": 1 , "arity": 1 },
   "val" : { "tk": 1, "name": "VAL", "cls": "function", "length": 2 , "arity": 2 },
   "key" : { "tk": 1, "name": "KEY", "cls": "function", "length": 2 , "arity": 2 },
   "len" : { "tk": 1, "name": "LEN", "cls": "function", "length": 1 , "arity": 1 },
@@ -27,5 +28,11 @@ window.gcexports.globalLexicon = {
   "span" : { "tk": 1, "name": "SPAN", "cls": "function", "length": 2, "arity": 2 },
   "p" : { "tk": 1, "name": "P", "cls": "function", "length": 2, "arity": 2 },
   "h3" : { "tk": 1, "name": "H3", "cls": "function", "length": 1, "arity": 1 },
-  "div" : { "tk": 1, "name": "DIV", "cls": "function", "length": 2, "arity": 2 }
+  "div" : { "tk": 1, "name": "DIV", "cls": "function", "length": 2, "arity": 2 },
+  "table" : { "tk": 1, "name": "TABLE", "cls": "function", "length": 2, "arity": 2 },
+  "thead" : { "tk": 1, "name": "THEAD", "cls": "function", "length": 2, "arity": 2 },
+  "td" : { "tk": 1, "name": "TD", "cls": "function", "length": 2, "arity": 2 },
+  "th" : { "tk": 1, "name": "TH", "cls": "function", "length": 2, "arity": 2 },
+  "tr" : { "tk": 1, "name": "TR", "cls": "function", "length": 2, "arity": 2 }
+
 }

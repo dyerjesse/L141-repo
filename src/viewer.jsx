@@ -63,6 +63,25 @@ function renderElts(data) {
     case 'p':
       elts.push(<p key={key++} {...renderAttr(d.attr)}>{renderElts(d.elts)}</p>);
       break;
+    case 'table':
+      elts.push(<table key={key++} className='table-auto'>{renderElts(d.elts)}</table>);
+      break;
+    case 'thead':
+      elts.push(<thead key={key++}>{renderElts(d.elts)}</thead>);
+      break;
+    case 'tbody':
+      elts.push(<tbody key={key++}>{renderElts(d.elts)}</tbody>);
+      break;
+    case 'td':
+      elts.push(<td key={key++} className='p-1 border-2'>{renderElts(d.elts)}</td>);
+      break;
+    case 'th':
+      elts.push(<th key={key++} className='p-1 border-2'>{renderElts(d.elts)}</th>);
+      break;
+    case 'tr':
+      elts.push(<tr key={key++} {...renderAttr(d.attr)}>{renderElts(d.elts)}</tr>);
+      break;
+    case 'pre':
     default:
       elts.push(d);
       break;

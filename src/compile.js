@@ -14,6 +14,22 @@ export class Checker extends BasisChecker {
       resume(err, val);
     });
   }
+  GOODBYE(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      const err = [];
+      const val = node;
+      resume(err, val);
+    });
+  }
+
+  TABLE(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      const err = [];
+      const val = node;
+      resume(err, val);
+    });
+  }
+
   DIV(node, options, resume) {
     this.visit(node.elts[0], options, async (e0, v0) => {
       const err = [];
@@ -53,6 +69,84 @@ export class Transformer extends BasisTransformer {
       const err = [];
       const val = `hello, ${v0}!`;
       resume(err, val);
+    });
+  }
+
+  GOODBYE(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      const err = [];
+      const val = `goodbye, ${v0}!`;
+      resume(err, val);
+    });
+  }
+
+  TABLE(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      this.visit(node.elts[1], options, async (e1, v1) => {
+        const err = [].concat(e0).concat(e1);
+        const val = {
+          type: "table",
+          attr: attrFromVal(v0),
+          elts: v1,
+        };
+        resume(err, val);
+      });
+    });
+  }
+
+  THEAD(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      this.visit(node.elts[1], options, async (e1, v1) => {
+        const err = [].concat(e0).concat(e1);
+        const val = {
+          type: "thead",
+          attr: attrFromVal(v0),
+          elts: v1,
+        };
+        resume(err, val);
+      });
+    });
+  }
+
+  TD(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      this.visit(node.elts[1], options, async (e1, v1) => {
+        const err = [].concat(e0).concat(e1);
+        const val = {
+          type: "td",
+          attr: attrFromVal(v0),
+          elts: v1,
+        };
+        resume(err, val);
+      });
+    });
+  }
+
+  TH(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      this.visit(node.elts[1], options, async (e1, v1) => {
+        const err = [].concat(e0).concat(e1);
+        const val = {
+          type: "th",
+          attr: attrFromVal(v0),
+          elts: v1,
+        };
+        resume(err, val);
+      });
+    });
+  }
+
+  TR(node, options, resume) {
+    this.visit(node.elts[0], options, async (e0, v0) => {
+      this.visit(node.elts[1], options, async (e1, v1) => {
+        const err = [].concat(e0).concat(e1);
+        const val = {
+          type: "tr",
+          attr: attrFromVal(v0),
+          elts: v1,
+        };
+        resume(err, val);
+      });
     });
   }
 
